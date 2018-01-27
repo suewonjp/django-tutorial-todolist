@@ -1,0 +1,11 @@
+*~
+.trashcan
+.DS_Store
+.swp
+.orig
+.*-version
+memo
+pydoc.sh
+*.pyc
+__pycache__
+
