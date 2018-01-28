@@ -1,11 +1,11 @@
 *~
-.trashcan
+.trashcan/
 .DS_Store
 .swp
 .orig
 .*-version
-memo
-pydoc.sh
+memo/
+extra/
 *.pyc
-__pycache__
+__pycache__/
 
