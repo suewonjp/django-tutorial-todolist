@@ -3,9 +3,13 @@
 .DS_Store
 .swp
 .orig
+tags
+Session.vim
 .*-version
 memo/
 extra/
 *.pyc
 __pycache__/
+db.sqlite3
+src-symlinks
 
