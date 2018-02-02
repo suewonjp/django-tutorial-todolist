@@ -10,6 +10,15 @@
 
     <header>
       <h1>TodoList</h1>
+
+      <div class="messages">
+      {% if messages %}
+        {% for message in messages %}
+        <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+      </div>
+
       <a href="{% url 'todos:add' %}">Add Todo</a>
       <hr>
     </header>

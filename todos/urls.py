@@ -7,6 +7,7 @@ app_name = 'todos'
 urlpatterns = [
     path('', views.index, name='index'),
     path('details/<int:id>', views.details, name='detail'),
-    path('add', views.add, name='add')
+    path('add', views.add, name='add'),
+    path('delete/<int:id>', views.delete, name='delete')
 ]
 
