@@ -1,8 +1,10 @@
 {% include 'partials/header.html' %}
+
 <a href="{% url 'todos:index' %}">Go Back</a>
 <br>
 <h1>{{todo.title}}</h1>
 <p>{{todo.text}}</p>
 <br>
 Create on {{todo.created_at}}
+
 {% include 'partials/footer.html' %}

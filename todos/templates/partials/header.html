@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     {% load static %}
     <link rel="stylesheet" href="{% static 'todos/css/style.css' %}">
     <title>TodoList</title>
-</head>
-<body>
+  </head>
+  <body>
 
     <header>
-        <h1>TodoList</h1>
-        <a href="{% url 'todos:add' %}">Add Todo</a>
-        <hr>
+      <h1>TodoList</h1>
+      <a href="{% url 'todos:add' %}">Add Todo</a>
+      <hr>
     </header>
 

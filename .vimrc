@@ -2,6 +2,8 @@
 
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
+au FileType html,css set tabstop=2 softtabstop=2 shiftwidth=2
+
 let prjPath = expand("%:p:h")
 
 if (filereadable("Session.vim"))
