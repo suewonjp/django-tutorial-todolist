@@ -1,9 +1,8 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from .models import Todo
 
 def index(request):
-    # return HttpResponse('Hello World')
     todos = Todo.objects.all()[:10]
     context = {
             'todos':todos
@@ -11,7 +10,7 @@ def index(request):
     return render(request, 'index.html', context)
 
 def details(request, id):
-    todo = Todo.objects.get(id=id)
+    todo = get_object_or_404(Todo, pk=id)
     context = {
             'todo':todo
     }
@@ -23,7 +22,7 @@ def add(request):
         text = request.POST['text']
         todo = Todo(title=title, text=text)
         todo.save()
-        return redirect('/todos')
+        return redirect(reverse('todos:index'))
     else:
         return render(request, 'add.html')
 
