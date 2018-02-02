@@ -1,10 +1,10 @@
-from django.urls import include, re_path
+from django.urls import include, path
 
 from . import views
 
 urlpatterns = [
-    re_path(r'^$', views.index, name='index'),
-    re_path(r'^details/(?P<id>\w{0,50})/$', views.details),
-    re_path(r'^add', views.add, name='add')
+    path('', views.index, name='index'),
+    path('details/<int:id>', views.details, name='detail'),
+    path('add', views.add, name='add')
 ]
 
