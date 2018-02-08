@@ -6,10 +6,11 @@
 <p>{{todo.text}}</p>
 <br>
 Create on {{todo.created_at}}
+<br><br>
+<a class='todos-edit' href="{% url 'todos:update' todo.id %}">Edit</a>
 <hr>
 <form action="{% url 'todos:delete' todo.id %}" method="post">
   {% csrf_token %}
   <input class='todos-delete' type="submit" value="Delete" />
 </form>
-
 {% include 'partials/footer.html' %}

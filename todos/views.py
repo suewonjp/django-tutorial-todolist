@@ -28,6 +28,20 @@ def add(request):
     else:
         return render(request, 'add.html')
 
+def update(request, id):
+    todo = get_object_or_404(Todo, pk=id)
+    if (request.method == 'POST'):
+        todo.title = request.POST['title']
+        todo.text = request.POST['text']
+        messages.success(request, 'Updated : %s' % todo.title)
+        todo.save()
+        return redirect(reverse('todos:detail', args=[ id ]))
+    else:
+        context = {
+                'todo':todo
+        }
+        return render(request, 'edit.html', context)
+
 def delete(request, id):
     if (request.method == 'POST'):
         todo = get_object_or_404(Todo, pk=id)
