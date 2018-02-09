@@ -7,5 +7,12 @@ class Todo(models.Model):
     created_at = models.DateTimeField(default=datetime.now, blank=True)
 
     def __str__(self):
-        return self.title
+        return '%s: %s' % (self.id, self.title)
+
+class Category(models.Model):
+    name = models.CharField(max_length=50)
+    todos = models.ManyToManyField(Todo)
+
+    def __str__(self):
+        return '%s: %s' % (self.id, self.name)
 
