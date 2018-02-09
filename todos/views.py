@@ -14,7 +14,8 @@ def index(request):
 def details(request, id):
     todo = get_object_or_404(Todo, pk=id)
     context = {
-            'todo':todo
+            'todo':todo,
+            'categories':todo.category_set.all()
     }
     return render(request, 'details.html', context)
 
@@ -38,7 +39,7 @@ def update(request, id):
         return redirect(reverse('todos:detail', args=[ id ]))
     else:
         context = {
-                'todo':todo
+            'todo':todo
         }
         return render(request, 'edit.html', context)
 

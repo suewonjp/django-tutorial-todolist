@@ -7,10 +7,22 @@
 <br>
 Create on {{todo.created_at}}
 <br><br>
-<a class='todos-edit' href="{% url 'todos:update' todo.id %}">Edit</a>
+
+<div>
+Category:
+{% for c in categories %}
+  {% if forloop.last %}
+  <span>{{c.name}}</span>
+  {% else %}
+  <span>{{c.name}}, </span>
+  {% endif %}
+{% endfor %}
+</div>
+
 <hr>
 <form action="{% url 'todos:delete' todo.id %}" method="post">
   {% csrf_token %}
+  <a class='todos-edit' href="{% url 'todos:update' todo.id %}">Edit</a>
   <input class='todos-delete' type="submit" value="Delete" />
 </form>
 {% include 'partials/footer.html' %}
