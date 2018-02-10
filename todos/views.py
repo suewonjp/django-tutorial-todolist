@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib import messages
 # from django.http import HttpResponse
-from .models import Todo
+from .models import Todo, Category
 
 def index(request):
     todos = Todo.objects.all()[:10]
@@ -25,9 +25,18 @@ def add(request):
         text = request.POST['text']
         todo = Todo(title=title, text=text)
         todo.save()
+        categories = request.POST.getlist('category-select')
+        if categories:
+            for id in categories:
+                category = Category.objects.get(id=id)
+                todo.category_set.add(category)
         return redirect(reverse('todos:index'))
     else:
-        return render(request, 'add.html')
+        categories = Category.objects.all()
+        context = {
+            'categories':categories
+        }
+        return render(request, 'add.html', context)
 
 def update(request, id):
     todo = get_object_or_404(Todo, pk=id)

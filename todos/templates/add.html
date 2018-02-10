@@ -7,6 +7,18 @@
   <br>
   <label for="text">Text</label><br />
   <textarea name="text" id="text"></textarea>
+  <br>
+  <div>
+    <a class='btn btn-outline-success btn-sm' data-toggle='collapse' href='#category-edit-group' role='button' aria-expanded='false' aria-controls='category-edit-group'>Category</a>
+  </div>
+  <div id='category-edit-group' class='collapse'>
+    <div class='badge badge-light'>
+      {% for c in categories %}
+      <input type='checkbox' value='{{c.id}}' name='category-select'>
+      <label for='category-select'>{{c.name}}</label>
+      {% endfor %}
+    </div>
+  </div>
   <br><br>
   <input type="submit" value="Submit" />
 </form>

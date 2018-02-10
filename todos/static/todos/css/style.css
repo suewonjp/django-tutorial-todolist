@@ -5,3 +5,12 @@ a {
 .messages .success {
   color: blue
 }
+
+#category-edit-group {
+  margin: 1em auto auto auto
+}
+
+#category-edit-group label {
+  margin: auto 0.5em auto auto
+}
+
