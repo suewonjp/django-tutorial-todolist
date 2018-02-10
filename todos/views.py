@@ -85,3 +85,11 @@ def category_add(request):
         }
         return render(request, 'category/add.html', context)
 
+def category_detail(request, category_id):
+    category = get_object_or_404(Category, pk=category_id)
+    context = {
+            'category':category,
+            'todos':category.todos.all()
+    }
+    return render(request, 'category/detail.html', context)
+

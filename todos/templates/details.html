@@ -2,7 +2,7 @@
 
 <a href="{% url 'todos:index' %}">Go Back</a>
 <br>
-<h1>{{todo.title}}</h1>
+<h3>{{todo.title}}</h3>
 <p>{{todo.text}}</p>
 <br>
 Created at {{todo.created_at}}
@@ -11,7 +11,7 @@ Created at {{todo.created_at}}
 <div>
   <div>Category:</div>
   {% for c in categories %}
-  <span class='badge badge-light'>{{c.name}}</span>
+  <a href='{% url "todos:category/detail" c.id %}' class='btn btn-light'>{{c.name}}</a>
   {% endfor %}
 </div>
 
@@ -21,4 +21,5 @@ Created at {{todo.created_at}}
   <a class='todos-edit btn btn-outline-secondary' href="{% url 'todos:update' todo.id %}">Edit</a>
   <input class='todos-delete btn btn-danger' type="submit" value="Delete" />
 </form>
+
 {% include 'partials/footer.html' %}

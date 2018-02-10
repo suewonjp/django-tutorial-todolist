@@ -1,0 +1,14 @@
+{% include 'partials/header.html' %}
+
+<h3>Category : {{category.name}}</h3>
+
+<ul class='list-group'>
+  {% for todo in todos %}
+  <li class='list-group-item'>
+    <a href="{% url 'todos:detail' todo.id %}">{{todo.title}}</a>
+  </li>
+  {% endfor %}
+</ul>
+
+{% include 'partials/footer.html' %}
+
