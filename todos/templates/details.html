@@ -5,24 +5,20 @@
 <h1>{{todo.title}}</h1>
 <p>{{todo.text}}</p>
 <br>
-Create on {{todo.created_at}}
+Created at {{todo.created_at}}
 <br><br>
 
 <div>
-Category:
-{% for c in categories %}
-  {% if forloop.last %}
-  <span>{{c.name}}</span>
-  {% else %}
-  <span>{{c.name}}, </span>
-  {% endif %}
-{% endfor %}
+  <div>Category:</div>
+  {% for c in categories %}
+  <span class='badge badge-light'>{{c.name}}</span>
+  {% endfor %}
 </div>
 
 <hr>
 <form action="{% url 'todos:delete' todo.id %}" method="post">
   {% csrf_token %}
-  <a class='todos-edit' href="{% url 'todos:update' todo.id %}">Edit</a>
-  <input class='todos-delete' type="submit" value="Delete" />
+  <a class='todos-edit btn btn-outline-secondary' href="{% url 'todos:update' todo.id %}">Edit</a>
+  <input class='todos-delete btn btn-danger' type="submit" value="Delete" />
 </form>
 {% include 'partials/footer.html' %}

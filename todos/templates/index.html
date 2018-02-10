@@ -1,8 +1,8 @@
 {% include 'partials/header.html' %}
 
-<ul>
+<ul class='list-group'>
   {% for todo in todos %}
-  <li>
+  <li class='list-group-item'>
     <a href="{% url 'todos:detail' todo.id %}">{{todo.title}}</a>
   </li>
   {% endfor %}
