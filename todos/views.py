@@ -71,3 +71,17 @@ def delete(request, id):
 
     return redirect(reverse('todos:index'))
 
+def category_add(request):
+    if (request.method == 'POST'):
+        name = request.POST['name']
+        category = Category(name=name)
+        category.save()
+        messages.success(request, 'Category Added : %s' % category.name)
+        return redirect(reverse('todos:index'))
+    else:
+        categories = Category.objects.all()
+        context = {
+            'categories':categories
+        }
+        return render(request, 'category/add.html', context)
+

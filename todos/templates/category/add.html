@@ -1,0 +1,26 @@
+{% include 'partials/header.html' %}
+
+<div class='hidden-categories'>
+  {% for c in categories %}
+  <span class='category-{{c.name}}'></span>
+  {% endfor %}
+</div>
+
+<div class='warning-box'>
+  <div class="alert alert-warning fade show" role="alert">
+    That name already exists!
+  </div>
+</div>
+
+<form id='add-category-form' action="{% url 'todos:category/add' %}" method="post">
+  {% csrf_token %}
+  <label for="name">Name</label><br>
+  <input type="text" name="name" id="new-category-name">
+  <br><br>
+  <input class='btn btn-primary' value='Submit' type="submit" disabled/>
+</form>
+<br>
+<a href="{% url 'todos:index' %}">Go Back</a>
+
+{% include 'partials/footer.html' %}
+

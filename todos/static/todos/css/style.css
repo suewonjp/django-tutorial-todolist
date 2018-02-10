@@ -14,3 +14,7 @@ a {
   margin: auto 0.5em auto auto
 }
 
+.hidden-categories, .warning-box {
+  display: none
+}
+

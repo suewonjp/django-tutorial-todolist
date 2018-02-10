@@ -8,5 +8,21 @@ $(document).ready(function() {
   }
   $(document).find('form').on('keypress', checkEnter)
 
+  $('#new-category-name').on('change', function() {
+    const submit = $('#add-category-form input[type="submit"]').attr('disabled', true)
+    const name = $(this).val()
+    if (!name)
+      return
+    if ($('.hidden-categories').find(`.category-${name}`).length) {
+      // Category name duplicated
+      $('.warning-box').show()
+    }
+    else {
+      // Ready to submit a new category
+      $('.warning-box').hide()
+      submit.attr('disabled', false)
+    }
+  })
+
 })
 
