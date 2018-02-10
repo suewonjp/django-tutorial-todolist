@@ -7,6 +7,21 @@
   <br>
   <label for="text">Text</label><br />
   <textarea name="text" id="text">{{todo.text}}</textarea>
+  <div>
+    <a class='btn btn-outline-success btn-sm' data-toggle='collapse' href='#category-edit-group' role='button' aria-expanded='false' aria-controls='category-edit-group'>Category</a>
+  </div>
+  <div id='category-edit-group' class='collapse'>
+    <div class='badge badge-light'>
+      {% for c in categories %}
+      {% if c.0 %}
+      <input type='checkbox' value='{{c.1.id}}' name='category-select' checked>
+      {% else %}
+      <input type='checkbox' value='{{c.1.id}}' name='category-select'>
+      {% endif %}
+      <label for='category-select'>{{c.1.name}}</label>
+      {% endfor %}
+    </div>
+  </div>
   <br><br>
   <input type="submit" value="Submit" />
 </form>

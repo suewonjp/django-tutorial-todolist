@@ -30,6 +30,7 @@ def add(request):
             for id in categories:
                 category = Category.objects.get(id=id)
                 todo.category_set.add(category)
+        messages.success(request, 'Added : %s' % todo.title)
         return redirect(reverse('todos:index'))
     else:
         categories = Category.objects.all()
@@ -43,12 +44,22 @@ def update(request, id):
     if (request.method == 'POST'):
         todo.title = request.POST['title']
         todo.text = request.POST['text']
-        messages.success(request, 'Updated : %s' % todo.title)
+        categories = request.POST.getlist('category-select')
+        todo.category_set.clear()
+        if categories:
+            for cid in categories:
+                category = Category.objects.get(id=cid)
+                todo.category_set.add(category)
         todo.save()
+        messages.success(request, 'Updated : %s' % todo.title)
         return redirect(reverse('todos:detail', args=[ id ]))
     else:
+        attached_categories = todo.category_set.all()
+        categories = [(True,c) if attached_categories.filter(id=c.id) else (False, c) for c in Category.objects.all() ]
+
         context = {
-            'todo':todo
+            'todo':todo,
+            'categories':categories
         }
         return render(request, 'edit.html', context)
 
