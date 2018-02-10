@@ -2,6 +2,14 @@ a {
   color: green
 }
 
+a:hover {
+  text-decoration: none
+}
+
+a.app-title {
+  color: black
+}
+
 .messages .success {
   color: blue
 }
