@@ -10,5 +10,12 @@
   {% endfor %}
 </ul>
 
+<hr>
+<form action="{% url 'todos:category/delete' category.id %}" method="post">
+  {% csrf_token %}
+  <a class='btn btn-outline-secondary' href="{% url 'todos:category/update' category.id %}">Edit</a>
+  <input class='btn btn-danger' type="submit" value="Delete" />
+</form>
+
 {% include 'partials/footer.html' %}
 

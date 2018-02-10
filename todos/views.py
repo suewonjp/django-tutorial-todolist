@@ -93,3 +93,27 @@ def category_detail(request, category_id):
     }
     return render(request, 'category/detail.html', context)
 
+def category_update(request, category_id):
+    category = get_object_or_404(Category, pk=category_id)
+    if (request.method == 'POST'):
+        category.name = request.POST['name']
+        category.save()
+        messages.success(request, 'Category Updated : %s' % category.name)
+        return redirect(reverse('todos:category/detail', args=[ category_id ]))
+    else:
+        categories = Category.objects.all()
+        context = {
+            'categories':categories,
+            'category':category
+        }
+        return render(request, 'category/edit.html', context)
+
+
+def category_delete(request, category_id):
+    if (request.method == 'POST'):
+        category = get_object_or_404(Category, pk=category_id)
+        messages.success(request, 'Category Deleted : %s' % category.name)
+        category.delete()
+
+    return redirect(reverse('todos:index'))
+

@@ -13,7 +13,7 @@ $(document).ready(function() {
     const name = $(this).val()
     if (!name)
       return
-    if ($('.hidden-categories').find(`.category-${name}`).length) {
+    if ($('.existing-categories').find(`.category-${name}`).length) {
       // Category name duplicated
       $('.warning-box').show()
     }

@@ -1,6 +1,6 @@
 {% include 'partials/header.html' %}
 
-<h3>New Category</h3>
+<h3>Edit Category</h3>
 
 <br>
 <div>
@@ -21,15 +21,16 @@
   </div>
 </div>
 
-<form id='add-category-form' action="{% url 'todos:category/add' %}" method="post">
+<form id='add-category-form' action="{% url 'todos:category/update' category.id %}" method="post">
   {% csrf_token %}
   <label for="name">Name</label><br>
-  <input type="text" name="name" id="new-category-name">
+  <input type="text" name="name" id="new-category-name" value='{{category.name}}'>
   <br><br>
   <input class='btn btn-primary' value='Submit' type="submit" disabled/>
 </form>
 <br>
-<a href="{% url 'todos:index' %}">Go Back</a>
+<a href="{% url 'todos:category/detail' category.id %}">Go Back</a>
 
 {% include 'partials/footer.html' %}
+
 

@@ -22,7 +22,7 @@ a.app-title {
   margin: auto 0.5em auto auto
 }
 
-.hidden-categories, .warning-box {
+.warning-box {
   display: none
 }
 
