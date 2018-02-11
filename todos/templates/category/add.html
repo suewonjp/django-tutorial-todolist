@@ -3,9 +3,8 @@
 
 <h3>New Category</h3>
 
-<br>
 <div>
-  <a class='btn btn-outline-success btn-sm' data-toggle='collapse' href='#category-list' role='button' aria-expanded='false' aria-controls='category-list'>Existing Category</a>
+  <a class='btn btn-outline-success btn-sm' data-toggle='collapse' href='#category-list' role='button' aria-expanded='false' aria-controls='category-list'>Existing Categories</a>
 </div>
 <div id='category-list' class='collapse'>
   <div class='existing-categories'>
@@ -14,7 +13,6 @@
     {% endfor %}
   </div>
 </div>
-<br>
 
 <div class='warning-box'>
   <div class="alert alert-warning fade show" role="alert">
@@ -24,11 +22,15 @@
 
 <form id='add-category-form' action="{% url 'todos:category/add' %}" method="post">
   {% csrf_token %}
-  <label for="name">Name</label><br>
-  <input type="text" name="name" id="new-category-name">
-  <br><br>
-  <input class='btn btn-primary' value='Submit' type="submit" disabled/>
+  <div class="form-group">
+    <label for="name">Name</label><br>
+    <input type="text" name="name" id="new-category-name">
+  </div>
+
+  <div class="form-group">
+    <hr>
+    <input class='btn btn-primary' value='Submit' type="submit" disabled/>
+  </div>
 </form>
 
 {% include 'partials/footer.html' %}
-
