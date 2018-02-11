@@ -14,9 +14,24 @@ hostScript=${0##*/}
 }
 
 prjname=$( gawk '/DJANGO_SETTINGS_MODULE/ { match($0, /"([[:alnum:]_]*)\.settings/, c); print c[1]; }' manage.py )
+
 db=$( python -c "from $prjname import settings; print(settings.DATABASES['default']['NAME'])" )
+[ $? = 0 ] || {
+  printf "[ %s ] \e[1;31m ERROR \e[0m Can't acquire db name\n" "${hostScript}"
+  exit 1
+}
+
 user=$( python -c "from $prjname import settings; print(settings.DATABASES['default']['USER'])" )
+[ $? = 0 ] || {
+  printf "[ %s ] \e[1;31m ERROR \e[0m Can't acquire user name\n" "${hostScript}"
+  exit 1
+}
+
 pw=$( python -c "from $prjname import settings; print(settings.DATABASES['default']['PASSWORD'])" )
+[ $? = 0 ] || {
+  printf "[ %s ] \e[1;31m ERROR \e[0m Can't acquire password\n" "${hostScript}"
+  exit 1
+}
 
 mycli -h localhost -u$user -p$pw "$db"
 
