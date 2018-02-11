@@ -71,6 +71,13 @@ def delete(request, id):
 
     return redirect(reverse('todos:index'))
 
+def category_index(request):
+    categories = Category.objects.all()
+    context = {
+        'categories':categories
+    }
+    return render(request, 'category/index.html', context)
+
 def category_add(request):
     if (request.method == 'POST'):
         name = request.POST['name']

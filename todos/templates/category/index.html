@@ -1,0 +1,18 @@
+{% include 'partials/header.html' %}
+
+<a class='btn btn-outline-primary' href="{% url 'todos:category/add' %}">Add Category</a>
+<br><br>
+
+<ul class='list-group'>
+  {% for c in categories %}
+  <li class='list-group-item'>
+    <a href="{% url 'todos:category/detail' c.id %}">{{c.name}}</a>
+  </li>
+  {% endfor %}
+</ul>
+
+<br>
+<a class='btn btn-dark' href="{% url 'todos:index' %}">Go Back</a>
+
+{% include 'partials/footer.html' %}
+
