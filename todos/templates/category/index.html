@@ -6,7 +6,14 @@
 <ul class='list-group'>
   {% for c in categories %}
   <li class='list-group-item'>
-    <a href="{% url 'todos:category/details' c.id %}">{{c.name}}</a>
+    <div class="row">
+      <div class="col-sm">
+        <a href="{% url 'todos:category/details' c.id %}">{{c.name}}</a>
+      </div>
+      <div class="col-sm">
+        {{c.todos.count}} Todos
+      </div>
+    </div>
   </li>
   {% endfor %}
 </ul>
