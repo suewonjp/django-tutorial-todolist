@@ -98,7 +98,7 @@ def category_detail(request, category_id):
             'category':category,
             'todos':category.todos.all()
     }
-    return render(request, 'category/detail.html', context)
+    return render(request, 'category/details.html', context)
 
 def category_update(request, category_id):
     category = get_object_or_404(Category, pk=category_id)
@@ -106,7 +106,7 @@ def category_update(request, category_id):
         category.name = request.POST['name']
         category.save()
         messages.success(request, 'Category Updated : %s' % category.name)
-        return redirect(reverse('todos:category/detail', args=[ category_id ]))
+        return redirect(reverse('todos:category/details', args=[ category_id ]))
     else:
         categories = Category.objects.all()
         context = {

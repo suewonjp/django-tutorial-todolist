@@ -22,7 +22,7 @@
     <div class='card-header'>Categories</div>
     <div class="attached-categories">
       {% for c in categories %}
-      <a href='{% url "todos:category/detail" c.id %}' class='card-link'>{{c.name}}</a>
+      <a href='{% url "todos:category/details" c.id %}' class='card-link'>{{c.name}}</a>
       {% endfor %}
     </div>
   </div>

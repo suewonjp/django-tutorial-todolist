@@ -6,7 +6,7 @@
 <ul class='list-group'>
   {% for c in categories %}
   <li class='list-group-item'>
-    <a href="{% url 'todos:category/detail' c.id %}">{{c.name}}</a>
+    <a href="{% url 'todos:category/details' c.id %}">{{c.name}}</a>
   </li>
   {% endfor %}
 </ul>
