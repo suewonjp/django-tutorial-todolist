@@ -30,7 +30,7 @@ def add(request):
             for id in categories:
                 category = Category.objects.get(id=id)
                 todo.category_set.add(category)
-        messages.success(request, 'Added : %s' % todo.title)
+        messages.success(request, 'Todo Added : %s' % todo.title)
         return redirect(reverse('todos:index'))
     else:
         categories = Category.objects.all()
@@ -51,7 +51,7 @@ def update(request, id):
                 category = Category.objects.get(id=cid)
                 todo.category_set.add(category)
         todo.save()
-        messages.success(request, 'Updated : %s' % todo.title)
+        messages.success(request, 'Todo Updated : %s' % todo.title)
         return redirect(reverse('todos:detail', args=[ id ]))
     else:
         attached_categories = todo.category_set.all()
@@ -66,7 +66,7 @@ def update(request, id):
 def delete(request, id):
     if (request.method == 'POST'):
         todo = get_object_or_404(Todo, pk=id)
-        messages.success(request, 'Deleted : %s' % todo.title)
+        messages.success(request, 'Todo Deleted : %s' % todo.title)
         todo.delete()
 
     return redirect(reverse('todos:index'))
