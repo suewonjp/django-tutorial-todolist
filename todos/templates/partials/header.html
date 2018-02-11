@@ -23,6 +23,10 @@
 
       <a class='btn btn-success' href="{% url 'todos:add' %}">Add Todo</a>
       <a class='btn btn-outline-primary' href="{% url 'todos:category/index' %}">Categories</a>
+      {% if not url_to_go_back %}
+      {% url 'todos:index' as url_to_go_back %}
+      {% endif %}
+      <a class='btn btn-dark' href="{{ url_to_go_back }}">Go Back</a>
       <hr>
     </header>
 
